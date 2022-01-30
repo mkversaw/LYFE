@@ -21,27 +21,9 @@ import gym from "./gym.svg";
 import Navbar from "./Navbar.js";
 import Profile from "./Profile.js"
 
-class App extends Component {
 
-  state = {
-    data: null
-  };
 
-  componentDidMount() {
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-    // fetching the GET route from the Express server which matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    //return body;
-  
+function App() {
 
   const [glassAmt, setGlassAmt] = useState(0);
   const [calories, setCalories] = useState(0);
@@ -407,8 +389,8 @@ class App extends Component {
   );
   
   
-  }
-  render() {
+  
+
   return (
     
       <div className="App" style={{backgroundColor:"blue"}}>
@@ -417,23 +399,23 @@ class App extends Component {
         <div className="gridWrapper" >
           <Grid container direction="row" justifyContent="center" alignItems="center" spacing={2} >
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card" >{this.cardwater}</Card>
+              <Card variant="outlined" className="card" >{cardwater}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{this.cardbreakfast}</Card>
+              <Card variant="outlined" className="card">{cardbreakfast}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{this.cardlunch}</Card>
+              <Card variant="outlined" className="card">{cardlunch}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{this.carddinner}</Card>
+              <Card variant="outlined" className="card">{carddinner}</Card>
             </Grid>
             
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{this.cardrun}</Card>
+              <Card variant="outlined" className="card">{cardrun}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{this.cardsleep}</Card>
+              <Card variant="outlined" className="card">{cardsleep}</Card>
             </Grid>
             
           </Grid>
@@ -443,18 +425,18 @@ class App extends Component {
 
         
         <h1 style={{color:'white'}} className="p-2">
-          Total caloric intake today: {this.totalCalories}
+          Total caloric intake today: {totalCalories}
         </h1>
         <h1 style={{color:'white'}} className="p-2">
-          Total workout time today: {this.totalGymTime}
-        </h1>
-
-        <h1 style={{color:'white'}} className="p-2">
-          Wake-up time for a healthy amount of sleeep: {this.wakeTime}:{this.min} O'clock
+          Total workout time today: {totalGymTime}
         </h1>
 
         <h1 style={{color:'white'}} className="p-2">
-          Total amount of time exercising: {this.totalRun} minutes
+          Wake-up time for a healthy amount of sleeep: {wakeTime}:{min} O'clock
+        </h1>
+
+        <h1 style={{color:'white'}} className="p-2">
+          Total amount of time exercising: {totalRun} minutes
         </h1>
         
         
@@ -464,7 +446,6 @@ class App extends Component {
 
       </div>
   );
-  }
 }
 
 export default App;
