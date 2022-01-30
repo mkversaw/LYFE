@@ -1,4 +1,5 @@
 ![LYFE](https://i.imgur.com/OPrzvAY.png)
+# [LYFE](https://lyfe-application.herokuapp.com/)
 ## Inspiration
 When discussing simple habits for good health, the same tropes pop up often, drink water, eat healthy and sleep often. Simple things that 
 seem to be the trinity of good health. However, when we brought this idea up in our team, we realized exactly none of us follow this simple
