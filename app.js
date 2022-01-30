@@ -172,8 +172,12 @@ app.post("/login", function(req, res){
 	  });
 });
 
-let port = 3000;
+let port = 5000;
 
 app.listen(port, function() {
     console.log("Server started successfully.");
 });
+
+app.get('/express_backend', (req, res) => { // TODO
+	res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
+}); //Line 
