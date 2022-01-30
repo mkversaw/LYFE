@@ -12,14 +12,14 @@ const Profile = () =>{
 
 
         <div className="justify-content-center">
-            <h1 className="fullLine">Username goes here!</h1>
+            <h1 className="fullLine"> Bingus </h1>
         </div>
         
         <div className = "stats" >
             
-            <ul><li><h1>Level:</h1> </li>
-            <li><h1>XP:</h1></li>
-            <li><h1>Coins: </h1></li></ul>
+            <ul><li><h1>Level: 3</h1> </li>
+            <li><h1>XP: 500 </h1></li>
+            <li><h1>Coins: 453 </h1></li></ul>
         </div>
         </div>
     )
