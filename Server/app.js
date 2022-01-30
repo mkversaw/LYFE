@@ -181,10 +181,6 @@ app.post("/login", function(req, res){
 	  });
 });
 
-app.get("/info", function(req, res) {
-	console.log(req.cookies);
-});
-
 let port = (process.env.PORT || 5000);
 
 app.listen(port, function() {
