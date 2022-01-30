@@ -36,3 +36,185 @@
     transform: rotate(360deg);
   }
 }
+
+
+.gridWrapper{
+  width: 99%;
+}
+
+.card{
+  margin-top: 30px;
+  margin-left: 6px;
+  margin-right: 4px;
+  background-color: black;
+
+}
+
+.imgContainer{
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mediawrapper{
+  display: flex;
+
+  width: 80%;
+  height:auto;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+body {
+	margin: 0;
+	background: #222;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
+}
+
+
+
+header {
+  background: #2EAF7D;
+  width: 100%;
+}
+
+header::after {
+  display: flex;
+  clear: both;
+}
+
+.logo {
+  float: left;
+  margin-top: 14px;
+}
+
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  position: relative;
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+
+  position: absolute;
+  top: 0;
+  width: 0%;
+
+  transition: all ease-in-out 300ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+.photo{
+  height: 90px;
+  width:90px;
+  padding-top: 5px;
+}
+
+.container{
+  width:100%;
+  display: flex;
+
+}
+
+
+.leftside{
+  width: 48%;
+  display:flex;
+  align-items: left;
+  justify-content: left;
+}
+
+.rightside{
+  width:48%;
+  display:flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.photoTwo{
+  position: relative;
+  display: flex;
+  height: 36px;
+  width: 37px;
+  margin-bottom: -40px;
+  margin-left: -42px;
+  
+}
+
+.photoThree{
+  height: 40px;
+  width: 35px;
+  margin-bottom: -16px;
+  margin-right: -50px;
+  
+}
+
+.photoFour{
+  height: 300px;
+  width: 400px;
+  width: 100%;
+  display: flex;
+
+}
+
+.coinNumbers{
+position: relative;
+ color: #444; 
+ font-size: 20px;
+  margin-right: -50px;
+  margin-bottom: -50px;
+ 
+ 
+ 
+ 
+}
+
+.stats{
+  color: white;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}
+
+.stats li{
+  margin: 0 0 1em 0;
+}
+
+.fullLine{
+  margin-top: 10px;
+}
