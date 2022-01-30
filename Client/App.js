@@ -34,8 +34,9 @@ function App() {
   let time = today.getHours();
 
 
-  
 
+  const userId = 4; // the id of the user that you want to fetch
+  fetch(`/info/${userId}`);
   
 
  

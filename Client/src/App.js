@@ -396,6 +396,8 @@ function App() {
       <div className="App" style={{backgroundColor:"blue"}}>
         <Navbar></Navbar>
 
+        <title>LYFE</title>
+
         <div className="gridWrapper" >
           <Grid container direction="row" justifyContent="center" alignItems="center" spacing={2} >
             <Grid item xs={12} sm={6} md={4}>
