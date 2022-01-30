@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -29,7 +30,10 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-app.use(express.static("public"));
+//app.use(express.static("public"));
+
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.use(cookieParser());
 
 const { initializeApp } = require('firebase/app');
@@ -57,7 +61,11 @@ const User = mongoose.model("users", userSchema);
 
 initializeApp(firebaseConfig);
 
-app.get("/", function(req, res) {
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+/*app.get("/", function(req, res) {
 	var uid = req.cookies.uid;
   	if (uid) {
 		User.findOne({id : uid}, function(err, foundUser) {
@@ -72,7 +80,7 @@ app.get("/", function(req, res) {
   	} else {
 		res.render("login");
   	}
-});
+});*/
 
 app.get("/login", function(req, res) {
 	res.render("login");
@@ -172,12 +180,12 @@ app.post("/login", function(req, res){
 	  });
 });
 
-let port = 5000;
+let port = 3000;
 
 app.listen(port, function() {
     console.log("Server started successfully.");
 });
 
-app.get('/express_backend', (req, res) => { // TODO
-	res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
-}); //Line 
+// app.get('/express_backend', (req, res) => { // TODO
+// 	res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+// }); //Line 
