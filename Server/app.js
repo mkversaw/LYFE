@@ -61,11 +61,13 @@ const User = mongoose.model("users", userSchema);
 
 initializeApp(firebaseConfig);
 
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/', (req, res) => {
+// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
-/*app.get("/", function(req, res) {
+// user logins in -> redirect to react page
+
+app.get("/", function(req, res) {
 	var uid = req.cookies.uid;
   	if (uid) {
 		User.findOne({id : uid}, function(err, foundUser) {
@@ -80,7 +82,7 @@ app.get('/*', (req, res) => {
   	} else {
 		res.render("login");
   	}
-});*/
+});
 
 app.get("/login", function(req, res) {
 	res.render("login");
@@ -183,7 +185,7 @@ app.post("/login", function(req, res){
 let port = 3000;
 
 app.listen(port, function() {
-    console.log("Server started successfully.");
+    //console.log("Server started successfully.");
 });
 
 // app.get('/express_backend', (req, res) => { // TODO
