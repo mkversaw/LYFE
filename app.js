@@ -7,6 +7,7 @@ const { Schema } = mongoose; // easier to make new schemas
 const https = require('https');
 const http = require('http');
 const admin = require('firebase-admin');
+const cookieParser = require('cookie-parser');
 
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -29,6 +30,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
+app.use(cookieParser());
 
 const { initializeApp } = require('firebase/app');
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } = require('firebase/auth');
@@ -55,9 +57,21 @@ const User = mongoose.model("users", userSchema);
 
 initializeApp(firebaseConfig);
 
-
 app.get("/", function(req, res) {
-    res.render("login");
+	var uid = req.cookies.uid;
+  	if (uid) {
+		User.findOne({id : uid}, function(err, foundUser) {
+		  if (err) {
+			res.redirect("/login");
+		  } else {
+			if (foundUser) {
+			  res.redirect("/mainpage");
+			}
+		  }
+		});
+  	} else {
+		res.render("login");
+  	}
 });
 
 app.get("/login", function(req, res) {
