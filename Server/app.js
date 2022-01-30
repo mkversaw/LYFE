@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 //app.use(express.static("public"));
 
-app.use(express.static(path.join(__dirname, 'build')));
+//app.use(express.static(path.join(__dirname, 'build')));
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -91,7 +91,8 @@ app.get("/register", function(req, res) {
 });
 
 app.get("/mainpage", function(req, res) {
-	res.render("mainpage");
+	app.use(express.static(path.join(__dirname, 'build')));
+	res.redirect("index.html");
 });
 
 app.post("/register", function(req, res) {
