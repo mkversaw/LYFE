@@ -7,7 +7,6 @@ import {isMobile} from 'react-device-detect';
 import {InputAdornment , Grid,Icon, Card, CardContent, CardMedia,Typography, Button, CardActions,Box,TextField} from '@material-ui/core';
 import { SvgIcon } from '@material-ui/core';
 import {ThemeProvider, createTheme} from '@material-ui/core/styles';
-import { green, purple } from '@mui/material/colors';
 
 import DatePicker from "react-datepicker";
 
@@ -21,8 +20,6 @@ import gym from "./gym.svg";
 
 import Navbar from "./Navbar.js";
 import Profile from "./Profile.js"
-
-import React, { Component } from 'react'; //different
 
 class App extends Component {
 
@@ -420,23 +417,23 @@ class App extends Component {
         <div className="gridWrapper" >
           <Grid container direction="row" justifyContent="center" alignItems="center" spacing={2} >
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card" >{cardwater}</Card>
+              <Card variant="outlined" className="card" >{this.cardwater}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{cardbreakfast}</Card>
+              <Card variant="outlined" className="card">{this.cardbreakfast}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{cardlunch}</Card>
+              <Card variant="outlined" className="card">{this.cardlunch}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{carddinner}</Card>
+              <Card variant="outlined" className="card">{this.carddinner}</Card>
             </Grid>
             
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{cardrun}</Card>
+              <Card variant="outlined" className="card">{this.cardrun}</Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card variant="outlined" className="card">{cardsleep}</Card>
+              <Card variant="outlined" className="card">{this.cardsleep}</Card>
             </Grid>
             
           </Grid>
@@ -446,18 +443,18 @@ class App extends Component {
 
         
         <h1 style={{color:'white'}} className="p-2">
-          Total caloric intake today: {totalCalories}
+          Total caloric intake today: {this.totalCalories}
         </h1>
         <h1 style={{color:'white'}} className="p-2">
-          Total workout time today: {totalGymTime}
-        </h1>
-
-        <h1 style={{color:'white'}} className="p-2">
-          Wake-up time for a healthy amount of sleeep: {wakeTime}:{min} O'clock
+          Total workout time today: {this.totalGymTime}
         </h1>
 
         <h1 style={{color:'white'}} className="p-2">
-          Total amount of time exercising: {totalRun} minutes
+          Wake-up time for a healthy amount of sleeep: {this.wakeTime}:{this.min} O'clock
+        </h1>
+
+        <h1 style={{color:'white'}} className="p-2">
+          Total amount of time exercising: {this.totalRun} minutes
         </h1>
         
         
