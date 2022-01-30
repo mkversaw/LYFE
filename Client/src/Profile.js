@@ -17,10 +17,10 @@ const Profile = () =>{
         
         <div className = "stats" >
             
-            <ul><li><h1> Level: 3 </h1> </li>
-            <li><h1> XP: 500 </h1></li>
-            <li><h1> Coins: 453 </h1></li>
-            <li><h1> Savings: $0.32 / month </h1></li></ul>
+            <ul><li><h1> Level: 0 </h1> </li>
+            <li><h1> XP: 0 </h1></li>
+            <li><h1> Coins: 0 </h1></li>
+            <li><h1> Savings: $0 / month </h1></li></ul>
         </div>
         </div>
     )
