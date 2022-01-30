@@ -1,5 +1,6 @@
 require('dotenv').config()
 const ejs = require("ejs");
+const bodyParser = require("body-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 const { Schema } = mongoose; // easier to make new schemas
@@ -24,12 +25,13 @@ module.exports = mongooseConn; // ???
 
 const app = express();
 
+
+app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 const { initializeApp } = require('firebase/app');
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } = require('firebase/auth');
-const internal = require('stream');
 
 const firebaseConfig = {
 	apiKey: process.env.FIREBASE_API_KEY,
@@ -43,6 +45,7 @@ const firebaseConfig = {
 
 const userSchema = new mongoose.Schema ({
 	id: String,
+	email: String,
 	name: String,
 	goldcoin: Number,
 	socialcredit: Number
@@ -54,17 +57,29 @@ initializeApp(firebaseConfig);
 
 
 app.get("/", function(req, res) {
-    res.render("login.ejs");
+    res.render("login");
 });
 
+app.get("/login", function(req, res) {
+	res.render("login");
+});
+  
 app.get("/register", function(req, res) {
+	res.render("register",{error : ""});
+});
+
+app.get("/mainpage", function(req, res) {
+	res.render("mainpage");
+});
+
+app.post("/register", function(req, res) {
 	const email = req.body.email;
 	const password = req.body.pass1;
 	const password2 = req.body.pass2;
 	const name = req.body.username;
   
 	if(password != password2) {
-		res.redirect("/register");
+		res.render("register",{error : "Passwords did not match"});
 		return;
 	}
 
@@ -78,7 +93,7 @@ app.get("/register", function(req, res) {
 			res.redirect("/register");
 		  } else {
 			if (foundUser) {
-			  res.redirect("/mainpage");
+			  res.redirect("/login");
 			}
 		  }
 		});
@@ -93,6 +108,7 @@ app.get("/register", function(req, res) {
 			const newUser = new User({
 			  id: user.uid,
 			  name: name,
+			  email: email,
 			  goldcoin: 0,
 			  socialcredit: 0
 			});
@@ -114,10 +130,9 @@ app.get("/register", function(req, res) {
 });
 
 app.post("/login", function(req, res){
-	const email = req.body.username;
+	const email = req.body.email;
 	const password = req.body.password;
-	let foundUsername = "";
-  
+	console.log(email);
 	const auth = getAuth();
 	signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
@@ -141,7 +156,7 @@ app.post("/login", function(req, res){
 		console.log(errorCode, errorMessage);
 		res.redirect("/login");
 	  });
-  });
+});
 
 let port = 3000;
 

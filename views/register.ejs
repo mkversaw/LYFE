@@ -87,9 +87,18 @@
 
     <div class="login-form">
 
+  
+
+
         <form action="/register" method="post">
             <h2 class="text-center">Register</h2>
             
+            <% if (error) { %>
+        
+                <h6 style="color:red" class="text-center"> <%= error %> </h6>
+            
+            <% } %>
+
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Email Address" name="email" required="required">
             </div>
